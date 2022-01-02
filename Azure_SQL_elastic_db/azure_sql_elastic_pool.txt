@@ -1,0 +1,17 @@
+## Create Azure SQL elastic pool 
+
+# Create elastic pool with redundancy enabled
+
+az sql elastic-pool create -g mygroup -s myserver -n mypool -z
+
+# Create elastic pool with zone redundancy explicitly disabled 
+
+az sql elastic-pool create -g mygroup -s myserver -n mypool -z false
+
+# Create a Standard 100 DTU elastic pool 
+
+az sql elastic-pool create -g mygroup -s myserver -n mydb -e Standard -c 100
+
+# Create an elastic pool with GeneralPurpose edition
+
+az sql elastic-pool create -g mygroup -s myserver -n mydb -e GeneralPurpose -f Gen4 -c 1

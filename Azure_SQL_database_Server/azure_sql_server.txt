@@ -1,0 +1,41 @@
+## Provision Azure SQL Server with Azure CLI 
+
+# Set parameter values 
+
+# Set the resource group name and location for your server
+resourceGroupName=myResourceGroup
+location=eastus
+
+# Set an admin login and password for your database
+adminlogin=azureuser
+password=Azure1234567!
+
+# Set a server name that is unique to Azure DNS (<server_name>.database.windows.net)
+serverName=server-$RANDOM
+
+# Set the ip address range that can access your database
+startip=0.0.0.0
+endip=0.0.0.0
+
+# Create a resource group 
+
+az group create --name $resourceGroupName --location $location
+
+# Create Azure SQL Server 
+
+az sql server create \
+    --name $serverName \
+    --resource-group $resourceGroupName \
+    --location $location  \
+    --admin-user $adminlogin \
+    --admin-password $password
+
+
+# Create a firewall rule 
+
+az sql server firewall-rule create \
+    --resource-group $resourceGroupName \
+    --server $serverName \
+    -n AllowYourIp \
+    --start-ip-address $startip \
+    --end-ip-address $endip

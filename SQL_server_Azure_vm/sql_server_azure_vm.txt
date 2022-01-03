@@ -1,0 +1,23 @@
+# Create SQL Server on Azure VM 
+
+az sql vm create -n sqlvm -g myresourcegroup -l eastus --license-type AHUB
+
+# Create SQL Server on Azure VM with DR billing tag
+
+az sql vm create -n sqlvm -g myresourcegroup -l eastus --license-type DR
+
+# Create SQL Server on Azure VM with specific SKU / license type 
+
+az sql vm create -n sqlvm -g myresourcegroup -l eastus --image-sku Enterprise --license-type AHUB
+
+# Create SQL Server on Azure VM & configure auto backup setting
+
+az sql vm create -n sqlvm -g myresourcegroup -l eastus --license-type PAYG --sql-mgmt-type Full --backup-schedule-type manual --full-backup-frequency Weekly --full-backup-start-hour 2 --full-backup-duration 2 --sa-key {storageKey} --storage-account 'https://storageacc.blob.core.windows.net/' --retention-period 30 --log-backup-frequency 60
+
+# Create SQL Server on Azure VM & configure auto-patching setting
+
+az sql vm create -n sqlvm -g myresourcegroup -l eastus --license-type PAYG --sql-mgmt-type Full --day-of-week sunday --maintenance-window-duration 60 --maintenance-window-start-hour 2
+
+# Create SQL Server on Azure VM & configure SQL connectivity setting
+
+az sql vm create -n sqlvm -g myresourcegroup -l eastus --license-type PAYG --sql-mgmt-type Full --connectivity-type private --port 1433 --sql-auth-update-username {newlogin} --sql-auth-update-pwd {sqlpassword}

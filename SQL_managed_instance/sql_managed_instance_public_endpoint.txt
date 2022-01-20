@@ -1,0 +1,18 @@
+# Enable public endpoint in SQL managed instance
+
+Install-Module -Name Az
+
+Import-Module Az.Accounts
+Import-Module Az.Sql
+
+Connect-AzAccount
+
+# Use your subscription ID in place of subscription-id below
+
+Select-AzSubscription -SubscriptionId {subscription-id}
+
+# Replace rg-name with the resource group for your managed instance, and replace mi-name with the name of your managed instance
+
+$mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
+
+$mi = $mi | Set-AzSqlInstance -PublicDataEndpointEnabled $true -force

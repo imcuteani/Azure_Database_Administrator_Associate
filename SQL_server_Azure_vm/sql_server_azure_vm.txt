@@ -21,3 +21,7 @@ az sql vm create -n sqlvm -g myresourcegroup -l eastus --license-type PAYG --sql
 # Create SQL Server on Azure VM & configure SQL connectivity setting
 
 az sql vm create -n sqlvm -g myresourcegroup -l eastus --license-type PAYG --sql-mgmt-type Full --connectivity-type private --port 1433 --sql-auth-update-username {newlogin} --sql-auth-update-pwd {sqlpassword}
+
+# Create SQL Server VM group 
+
+az sql vm add-to-group -n sqlvm -g myresourcegroup --sqlvm-group sqlvmgroup --bootstrap-acc-pwd {bootstrappassword} --operator-acc-pwd {operatorpassword} --service-acc-pwd {servicepassword}

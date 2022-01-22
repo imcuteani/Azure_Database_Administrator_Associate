@@ -1,6 +1,6 @@
 ## Create Azure SQL elastic pool 
 
-# Create elastic pool with redundancy enabled
+# Create elastic pool with zone redundancy enabled
 
 az sql elastic-pool create -g mygroup -s myserver -n mypool -z
 

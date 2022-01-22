@@ -1,8 +1,8 @@
 # Provision Azure SQL single database 
 
 # Set the resource group name and location for your server
-resourceGroupName=myResourceGroup
-location=eastus
+resourceGroupName=techacademy_sqldemo
+location=eastasia
 
 # Set an admin login and password for your database
 adminlogin=azureuser
